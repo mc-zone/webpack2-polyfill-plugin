@@ -4,16 +4,16 @@ var snippetGenerator = require("./snippetGenerator");
 
 function Webpack2Polyfill(options){
   this.options = objectAssign({
+    "Promise":                 true,
     "Function.prototype.bind": true,
     "Object.keys":             true,
-    "Promise":                 true,
-    //"harmonyExport": true
+    "Object.defineProperty":   true
   },options||{})
 
 }
 
 function comments(str){
-  return "\n/** ===== " + str + " ===== **/\n";
+  return "/** ===== " + str + " ===== **/";
 }
 
 Webpack2Polyfill.prototype.apply = function(compiler){
@@ -52,13 +52,21 @@ Webpack2Polyfill.prototype.apply = function(compiler){
         ]));
       }
 
-      source.add(comments("Webpack2 Polyfill"));
+      if(options["Object.defineProperty"]){
+        snippets.push(this.asString([
+          comments("Object.defineProperty Polyfill"),
+          snippetGenerator(require.resolve("./object.defineProperty.raw.js")),
+          comments("Object.defineProperty Polyfill end")
+        ]));
+      }
+
       source.add(this.asString([
+        comments("Webpack2 Polyfill"),
         "(function(_global){",
         this.indent(snippets),
-        "}).call(window || global, window || global);"
+        "}).call(window || global, window || global);",
+        comments("Webpack2 Polyfill end")
       ]));
-      source.add(comments("Webpack2 Polyfill end"));
 
       return source.source() + prevSource;
     });
