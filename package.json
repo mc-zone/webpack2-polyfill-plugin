@@ -1,0 +1,14 @@
+{
+  "name": "webpack2-polyfill",
+  "version": "0.0.1",
+  "description": "Polyfill of Webpack 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mc@mc-zone.me",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "git+https://github.com/webpack/webpack.git"
+  }
+}
