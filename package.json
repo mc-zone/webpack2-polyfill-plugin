@@ -2,13 +2,21 @@
   "name": "webpack2-polyfill",
   "version": "0.0.1",
   "description": "Polyfill of Webpack 2",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "mc@mc-zone.me",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "^3.5.0",
+    "raw-loader": "^0.5.1",
     "webpack": "git+https://github.com/webpack/webpack.git"
+  },
+  "dependencies": {
+    "object-assign": "^4.1.0",
+    "promise-polyfill": "^6.0.2",
+    "strip-json-comments": "^2.0.1",
+    "webpack-sources": "^0.1.2"
   }
 }
