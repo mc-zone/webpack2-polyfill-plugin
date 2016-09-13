@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Polyfill of Webpack 2",
   "main": "./src/index.js",
+  "repository":"https://github.com/mc-zone/webpack2-polyfill.git",
   "scripts": {
     "test": "ava"
   },
