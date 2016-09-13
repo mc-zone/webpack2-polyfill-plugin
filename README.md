@@ -1,4 +1,4 @@
-# Webpack2 Polyfill
+# Webpack2 Polyfill [![Build Status](https://travis-ci.com/mc-zone/webpack2-polyfill.svg?token=Yy6bJ3JCpXQzAa99s2SH)](https://travis-ci.com/mc-zone/webpack2-polyfill.svg?token=Yy6bJ3JCpXQzAa99s2SH) 
 
 Provide Polyfills of Webpack2
 
@@ -37,4 +37,8 @@ IE.9 and above (Currently)
 
 ## Why not IE8 ?
 
-IE8 can't use Object.defineProperty with non-DOM Object. So can't do polyfill with some [Webpack2 Usage](https://gist.github.com/sokra/27b24881210b56bbaff7?utm_source=javascriptweekly&amp;utm_medium=email#other-polyfills) unless fork or change it's source code (Ex: Using defineProperty at `exports` for Harmony Export).
+IE8 can't use Object.defineProperty with non-DOM Object. So can't do polyfill with some [Webpack2 Usage](https://gist.github.com/sokra/27b24881210b56bbaff7?utm_source=javascriptweekly&amp;utm_medium=email#other-polyfills) (Ex: Using defineProperty at `exports` for Harmony Export).
+
+## License
+
+MIT
