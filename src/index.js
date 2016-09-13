@@ -30,7 +30,7 @@ Webpack2Polyfill.prototype.apply = function(compiler){
       if(options["Function.prototype.bind"]){
         snippets.push(this.asString([
           comments("Function.prototype.bind Polyfill"),
-          snippetGenerator(require.resolve("./function.bind.raw.js")),
+          snippetGenerator(require.resolve("./raw/function.bind.raw.js")),
           comments("Function.prototype.bind Polyfill end")
         ]));
       }
@@ -38,7 +38,7 @@ Webpack2Polyfill.prototype.apply = function(compiler){
       if(options["Object.keys"]){
         snippets.push(this.asString([
           comments("Object.keys Polyfill"),
-          snippetGenerator(require.resolve("./object.keys.raw.js")),
+          snippetGenerator(require.resolve("./raw/object.keys.raw.js")),
           comments("Object.keys Polyfill end")
         ]));
       }
@@ -58,7 +58,7 @@ Webpack2Polyfill.prototype.apply = function(compiler){
       if(options["Object.defineProperty"]){
         snippets.push(this.asString([
           comments("Object.defineProperty Polyfill"),
-          snippetGenerator(require.resolve("./object.defineProperty.raw.js")),
+          snippetGenerator(require.resolve("./raw/object.defineProperty.raw.js")),
           comments("Object.defineProperty Polyfill end")
         ]));
       }
