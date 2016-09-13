@@ -1,4 +1,4 @@
-# Webpack2 Polyfill [![Build Status](https://travis-ci.com/mc-zone/webpack2-polyfill.svg?token=Yy6bJ3JCpXQzAa99s2SH)](https://travis-ci.com/mc-zone/webpack2-polyfill.svg?token=Yy6bJ3JCpXQzAa99s2SH) 
+# Webpack2 Polyfill [![Build Status](https://travis-ci.com/mc-zone/webpack2-polyfill.svg?token=Yy6bJ3JCpXQzAa99s2SH)](https://travis-ci.com/mc-zone/webpack2-polyfill) 
 
 Provide Polyfills of Webpack2
 
