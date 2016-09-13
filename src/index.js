@@ -22,7 +22,10 @@ Webpack2Polyfill.prototype.apply = function(compiler){
     compilation.mainTemplate.plugin("bootstrap", function(prevSource){
       var source = new ConcatSource("");
 
-      var snippets = [];
+      var snippets = [
+        "var _global = this;",
+        "var module = undefined;" //avoid polyfill using commonjs
+      ];
       
       if(options["Function.prototype.bind"]){
         snippets.push(this.asString([
@@ -62,9 +65,9 @@ Webpack2Polyfill.prototype.apply = function(compiler){
 
       source.add(this.asString([
         comments("Webpack2 Polyfill"),
-        "(function(_global){",
+        "(function(){",
         this.indent(snippets),
-        "}).call(window || global, window || global);",
+        "}).call(typeof window != \"undefined\" ? window : global);",
         comments("Webpack2 Polyfill end")
       ]));
 

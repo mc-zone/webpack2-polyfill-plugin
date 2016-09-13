@@ -1,6 +1,9 @@
+module.exports =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	/** ===== Webpack2 Polyfill ===== **/
-/******/ 	(function(_global){
+/******/ 	(function(){
+/******/ 		var _global = this;
+/******/ 		var module = undefined;
 /******/ 		/** ===== Function.prototype.bind Polyfill ===== **/
 /******/ 		if (!Function.prototype.bind) {
 /******/ 		  Function.prototype.bind = function(oThis) {
@@ -332,36 +335,14 @@
 /******/ 		})();
 
 /******/ 		/** ===== Object.defineProperty Polyfill end ===== **/
-/******/ 	}).call(window || global, window || global);
+/******/ 	}).call(typeof window != "undefined" ? window : global);
 /******/ 	/** ===== Webpack2 Polyfill end ===== **/
-
-/******/ 	// install a JSONP callback for chunk loading
-/******/ 	var parentJsonpFunction = window["webpackJsonp"];
-/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules, executeModules) {
-/******/ 		// add "moreModules" to the modules object,
-/******/ 		// then flag all "chunkIds" as loaded and fire callback
-/******/ 		var moduleId, chunkId, i = 0, resolves = [], result;
-/******/ 		for(;i < chunkIds.length; i++) {
-/******/ 			chunkId = chunkIds[i];
-/******/ 			if(installedChunks[chunkId])
-/******/ 				resolves.push(installedChunks[chunkId][0]);
-/******/ 			installedChunks[chunkId] = 0;
-/******/ 		}
-/******/ 		for(moduleId in moreModules) {
-/******/ 			if(Object.prototype.hasOwnProperty.call(moreModules, moduleId)) {
-/******/ 				modules[moduleId] = moreModules[moduleId];
-/******/ 			}
-/******/ 		}
-/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules, executeModules);
-/******/ 		while(resolves.length)
-/******/ 			resolves.shift()();
-
-/******/ 	};
 
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
-/******/ 	// objects to store loaded and loading chunks
+/******/ 	// object to store loaded chunks
+/******/ 	// "0" means "already loaded"
 /******/ 	var installedChunks = {
 /******/ 		1: 0
 /******/ 	};
@@ -393,40 +374,17 @@
 /******/ 	// This file contains only the entry chunk.
 /******/ 	// The chunk loading function for additional chunks
 /******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
-/******/ 		if(installedChunks[chunkId] === 0)
-/******/ 			return Promise.resolve();
-
-/******/ 		// an Promise means "currently loading".
-/******/ 		if(installedChunks[chunkId]) {
-/******/ 			return installedChunks[chunkId][2];
-/******/ 		}
-/******/ 		// start chunk loading
-/******/ 		var head = document.getElementsByTagName('head')[0];
-/******/ 		var script = document.createElement('script');
-/******/ 		script.type = 'text/javascript';
-/******/ 		script.charset = 'utf-8';
-/******/ 		script.async = true;
-/******/ 		script.timeout = 120000;
-
-/******/ 		script.src = __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".chunk.js";
-/******/ 		var timeout = setTimeout(onScriptComplete, 120000);
-/******/ 		script.onerror = script.onload = onScriptComplete;
-/******/ 		function onScriptComplete() {
-/******/ 			// avoid mem leaks in IE.
-/******/ 			script.onerror = script.onload = null;
-/******/ 			clearTimeout(timeout);
-/******/ 			var chunk = installedChunks[chunkId];
-/******/ 			if(chunk !== 0) {
-/******/ 				if(chunk) chunk[1](new Error('Loading chunk ' + chunkId + ' failed.'));
-/******/ 				installedChunks[chunkId] = undefined;
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] !== 0) {
+/******/ 			var chunk = require("./" + ({}[chunkId]||chunkId) + ".chunk.js");
+/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
+/******/ 			for(var moduleId in moreModules) {
+/******/ 				modules[moduleId] = moreModules[moduleId];
 /******/ 			}
-/******/ 		};
-/******/ 		head.appendChild(script);
-
-/******/ 		var promise = new Promise(function(resolve, reject) {
-/******/ 			installedChunks[chunkId] = [resolve, reject];
-/******/ 		});
-/******/ 		return installedChunks[chunkId][2] = promise;
+/******/ 			for(var i = 0; i < chunkIds.length; i++)
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 		}
+/******/ 		return Promise.resolve();
 /******/ 	};
 
 /******/ 	// expose the modules object (__webpack_modules__)
@@ -462,32 +420,20 @@
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 
-/******/ 	// on error function for async loading
-/******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
+/******/ 	// uncatched error handler for webpack runtime
+/******/ 	__webpack_require__.oe = function(err) {
+/******/ 		process.nextTick(function() {
+/******/ 			throw err; // catch this error by using System.import().catch()
+/******/ 		});
+/******/ 	};
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
-/* exports provided: foo */
-/* exports used: foo */
-/*!****************!*\
-  !*** ./lib.js ***!
-  \****************/
-/***/ function(module, exports, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return foo; });
-var foo = "123";
-
-foo = "456";
-
-
-/***/ },
-/* 1 */,
-/* 2 */
+/* 0 */,
+/* 1 */
 /* unknown exports provided */
 /* all exports used */
 /*!******************!*\
@@ -495,16 +441,33 @@ foo = "456";
   \******************/
 /***/ function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_js__ = __webpack_require__(/*! ./lib.js */ 0);
-
-
-alert(__WEBPACK_IMPORTED_MODULE_0__lib_js__["a" /* foo */]);
-
-__webpack_require__.e/* nsure */(0).catch(function(err) { __webpack_require__.oe(err); }).then((function(require){
-  const asyncLib = __webpack_require__(/*! ./asyncLib.js */ 1);
-  alert(asyncLib.bar);
-}).bind(null, __webpack_require__))
+module.exports = {
+  getAPromise: function(resolved, rejected){
+    return new Promise(function(resolve, reject){
+      setTimeout(function(){
+        if(resolved){
+          resolve(resolved);
+        }else if(rejected){
+          reject(rejected)
+        }
+      },100);
+    })
+  },
+  //require.ensure() use Promise
+  getAEnsureLib: function(){
+    return new Promise(function(resolve, reject){
+      __webpack_require__.e/* nsure */(0).catch(function(err) { __webpack_require__.oe(err); }).then((function(require){
+        var lib = __webpack_require__(/*! ./ensureLib.js */ 0);
+        resolve(lib);
+      }).bind(null, __webpack_require__));
+    });
+  },
+  throwAError: function(){
+    return new Promise(function(resolve, reject){
+      throw new Error('aError')
+    })
+  }
+}
 
 
 /***/ }

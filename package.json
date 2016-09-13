@@ -4,13 +4,13 @@
   "description": "Polyfill of Webpack 2",
   "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "author": "mc@mc-zone.me",
   "license": "MIT",
   "devDependencies": {
+    "ava": "^0.16.0",
     "eslint": "^3.5.0",
-    "raw-loader": "^0.5.1",
     "webpack": "git+https://github.com/webpack/webpack.git"
   },
   "dependencies": {
@@ -18,5 +18,11 @@
     "promise-polyfill": "^6.0.2",
     "strip-json-comments": "^2.0.1",
     "webpack-sources": "^0.1.2"
+  },
+  "ava": {
+    "files": [
+      "./tests/**/*.test.js"
+    ],
+    "verbose": true
   }
 }
