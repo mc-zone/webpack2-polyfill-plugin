@@ -341,12 +341,6 @@ module.exports =
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
-/******/ 	// object to store loaded chunks
-/******/ 	// "0" means "already loaded"
-/******/ 	var installedChunks = {
-/******/ 		1: 0
-/******/ 	};
-
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 
@@ -371,21 +365,6 @@ module.exports =
 /******/ 		return module.exports;
 /******/ 	}
 
-/******/ 	// This file contains only the entry chunk.
-/******/ 	// The chunk loading function for additional chunks
-/******/ 	__webpack_require__.e = function requireEnsure(chunkId) {
-/******/ 		// "0" is the signal for "already loaded"
-/******/ 		if(installedChunks[chunkId] !== 0) {
-/******/ 			var chunk = require("./" + ({}[chunkId]||chunkId) + ".chunk.js");
-/******/ 			var moreModules = chunk.modules, chunkIds = chunk.ids;
-/******/ 			for(var moduleId in moreModules) {
-/******/ 				modules[moduleId] = moreModules[moduleId];
-/******/ 			}
-/******/ 			for(var i = 0; i < chunkIds.length; i++)
-/******/ 				installedChunks[chunkIds[i]] = 0;
-/******/ 		}
-/******/ 		return Promise.resolve();
-/******/ 	};
 
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
@@ -420,53 +399,27 @@ module.exports =
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 
-/******/ 	// uncatched error handler for webpack runtime
-/******/ 	__webpack_require__.oe = function(err) {
-/******/ 		process.nextTick(function() {
-/******/ 			throw err; // catch this error by using System.import().catch()
-/******/ 		});
-/******/ 	};
-
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */,
-/* 1 */
+/* 0 */
 /* unknown exports provided */
 /* all exports used */
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
-module.exports = {
-  getAPromise: function(resolved, rejected){
-    return new Promise(function(resolve, reject){
-      setTimeout(function(){
-        if(resolved){
-          resolve(resolved);
-        }else if(rejected){
-          reject(rejected)
-        }
-      },100);
-    })
-  },
-  //require.ensure() use Promise
-  getAEnsureLib: function(){
-    return new Promise(function(resolve, reject){
-      __webpack_require__.e/* nsure */(0).catch(function(err) { __webpack_require__.oe(err); }).then((function(require){
-        var lib = __webpack_require__(/*! ./ensureLib.js */ 0);
-        resolve(lib);
-      }).bind(null, __webpack_require__));
-    });
-  },
-  throwAError: function(){
-    return new Promise(function(resolve, reject){
-      throw new Error("aError")
-    })
+module.exports = function(){
+  var testObj = {
+    a:1,
+    b:2,
+    c:3
   }
+
+  return Object.keys(testObj);
 }
 
 

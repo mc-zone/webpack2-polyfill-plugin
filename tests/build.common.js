@@ -6,16 +6,16 @@ module.exports = function(dir, callback){
 
   var config = {
     entry:{
-      index: path.resolve(dir, './index.js')
+      index: path.resolve(dir, "./index.js")
     },
     output:{
       path:dir,
-      filename:'index.output.js',
-      chunkFilename: '[name].chunk.js',
+      filename:"index.output.js",
+      chunkFilename: "[name].chunk.js",
       pathinfo:true,
-      libraryTarget:'commonjs2'
+      libraryTarget:"commonjs2"
     },
-    target:'node',
+    target:"node",
     plugins:[
       new Webpack2Polyfill()
     ]

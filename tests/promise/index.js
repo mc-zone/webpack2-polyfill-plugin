@@ -21,7 +21,7 @@ module.exports = {
   },
   throwAError: function(){
     return new Promise(function(resolve, reject){
-      throw new Error('aError')
+      throw new Error("aError")
     })
   }
 }
