@@ -1,6 +1,6 @@
-# Webpack2 Polyfill [![Build Status](https://travis-ci.com/mc-zone/webpack2-polyfill.svg?token=Yy6bJ3JCpXQzAa99s2SH)](https://travis-ci.com/mc-zone/webpack2-polyfill) 
+# Webpack2 Polyfill [![Build Status](https://travis-ci.com/mc-zone/webpack2-polyfill-plugin.svg?token=Yy6bJ3JCpXQzAa99s2SH)](https://travis-ci.com/mc-zone/webpack2-polyfill-plugin) 
 
-Provide Polyfills of Webpack2
+Insert polyfills for Webpack2
 
 ## Includes:
 * Promise
@@ -14,12 +14,12 @@ See:[What's new in webpack 2](https://gist.github.com/sokra/27b24881210b56bbaff7
 
 step 1. Install
 
-`npm install webpack2-polyfill --save`
+`npm install webpack2-polyfill-plugin --save`
 
 step 2. Use plugin at your webpack config
 
 ```javascript
-var Webpack2Polyfill = require("webpack2-polyfill");
+var Webpack2Polyfill = require("webpack2-polyfill-plugin");
 
 module.exports = {
 

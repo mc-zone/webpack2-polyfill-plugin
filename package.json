@@ -1,9 +1,9 @@
 {
-  "name": "webpack2-polyfill",
+  "name": "webpack2-polyfill-plugin",
   "version": "0.0.1",
-  "description": "Polyfill of Webpack 2",
-  "main": "./src/index.js",
-  "repository":"https://github.com/mc-zone/webpack2-polyfill.git",
+  "description": "Insert Polyfills for Webpack 2",
+  "main": "./index.js",
+  "repository":"https://github.com/mc-zone/webpack2-polyfill-plugin.git",
   "scripts": {
     "test": "ava"
   },
@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "object-assign": "^4.1.0",
-    "promise-polyfill": "^6.0.2",
+    "promise-polyfill": "6.0.2",
     "strip-json-comments": "^2.0.1",
     "webpack-sources": "^0.1.2"
   },
