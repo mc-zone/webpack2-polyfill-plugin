@@ -11,7 +11,7 @@ module.exports = function(dir, callback){
     output:{
       path:dir,
       filename:"index.output.js",
-      chunkFilename: "[name].chunk.js",
+      chunkFilename: "[name].outputChunk.js",
       pathinfo:true,
       libraryTarget:"commonjs2"
     },

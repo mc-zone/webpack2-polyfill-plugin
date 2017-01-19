@@ -2,3 +2,7 @@ node_modules/
 *.swp
 *.swe
 .DS_Store
+
+# tests build files
+tests/**/*.output.js
+tests/**/*.outputChunk.js
