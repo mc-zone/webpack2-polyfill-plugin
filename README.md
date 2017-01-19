@@ -1,4 +1,4 @@
-# Webpack2 Polyfill [![Build Status](https://travis-ci.com/mc-zone/webpack2-polyfill-plugin.svg?token=Yy6bJ3JCpXQzAa99s2SH)](https://travis-ci.com/mc-zone/webpack2-polyfill-plugin) [![npm version](https://badge.fury.io/js/webpack2-polyfill-plugin.svg)](http://badge.fury.io/js/webpack2-polyfill-plugin) 
+# Webpack2 Polyfill Plugin [![Build Status](https://travis-ci.org/mc-zone/webpack2-polyfill-plugin.svg?branch=master)](https://travis-ci.org/mc-zone/webpack2-polyfill-plugin) [![npm version](https://badge.fury.io/js/webpack2-polyfill-plugin.svg)](http://badge.fury.io/js/webpack2-polyfill-plugin) 
 
 Insert polyfills for Webpack2
 
