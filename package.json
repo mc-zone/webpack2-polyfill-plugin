@@ -12,7 +12,7 @@
   "devDependencies": {
     "ava": "^0.16.0",
     "eslint": "^3.5.0",
-    "webpack": "git+https://github.com/webpack/webpack.git"
+    "webpack": "^2.2.0"
   },
   "dependencies": {
     "object-assign": "^4.1.0",
