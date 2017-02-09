@@ -71,7 +71,7 @@ Webpack2Polyfill.prototype.apply = function(compiler){
         "if(typeof window != \"undefined\") return window;",
         "if(typeof global != \"undefined\") return global;",
         "if(typeof self != \"undefined\") return self;",
-        "})()",
+        "})())",
         comments("Webpack2 Polyfill end")
       ]));
 
