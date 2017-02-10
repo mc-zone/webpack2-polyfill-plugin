@@ -67,7 +67,11 @@ Webpack2Polyfill.prototype.apply = function(compiler){
         comments("Webpack2 Polyfill"),
         "(function(){",
         this.indent(snippets),
-        "}).call(typeof window != \"undefined\" ? window : global);",
+        "}).call((function(){",
+        "if(typeof window != \"undefined\") return window;",
+        "if(typeof global != \"undefined\") return global;",
+        "if(typeof self != \"undefined\") return self;",
+        "})())",
         comments("Webpack2 Polyfill end")
       ]));
 
