@@ -1,6 +1,6 @@
 {
   "name": "webpack2-polyfill-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Insert Polyfills for Webpack 2",
   "main": "./index.js",
   "repository":"https://github.com/mc-zone/webpack2-polyfill-plugin.git",
